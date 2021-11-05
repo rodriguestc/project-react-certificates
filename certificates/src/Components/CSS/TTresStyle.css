@@ -1,0 +1,15 @@
+.box-Alert{
+    width: 150px;
+    height: 150px;
+    align-items: center;
+}
+
+.certificates-input{
+    width: 515px;
+    height: 40px;
+    border: 2px solid #AAAAAA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin: 0 40px 10px 0;
+    padding: 0 0 0 12px;
+}

@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Nunito&display=swap');
+
+.background {
+    background-color: #ECEEF2;
+    align-items: center;
+}
+
+.text {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    color: #767676;
+    width: 100px;
+    margin: 0 0 4px 0;
+}
+
+.inputMax{
+    width: 515px;
+    height: 40px;
+    border: 2px solid #AAAAAA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin: 0 40px 48px 0;
+    padding: 0 0 0 12px;
+}
+  
+::-webkit-input-placeholder {
+    font-size: 16px;
+    line-height: 18px;
+}
+  
+.box-input {
+    display: inline-block;
+}
+
+.inputShort {
+    background: #ffffff;
+    border: 2px solid #aaaaaa;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 325px;
+    height: 40px;
+    text-indent: 10px;
+    font-size: 14px;
+}
+
+.boxEmailTel {
+    width: 100%;
+}
+
+#inputEmail{
+    width: 325px;
+    margin-right: 30px;
+}
+
+#telefone {
+    width: 162px;
+    margin-left: 40px;
+}
+
+.boxEmail {
+    display: inline-block;
+    margin-right: 60px;
+    width: 45%;
+}
+
+.boxTel{
+    display: inline-block;
+    width: 25%;
+}
+
+.textCB {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.align {
+    margin-left: 40px;
+}
