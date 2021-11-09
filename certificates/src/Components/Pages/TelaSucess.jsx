@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import {Button} from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import TelaUm from './TelaUm';
 import '../CSS/Sucess.css';
+import '../CSS/styleMui.css';
 
 
-function TelaSucess () {
+function TelaSucess({ aoEnviar }) {
     const [dados, setDados] = useState("");
+    let linkUm = {TelaUm};
 
     useEffect(() => {
         let dados = {
-          fullName: localStorage.getItem('nome'),
-          nickname: localStorage.getItem('nickname'),
-          email: localStorage.getItem('email'),
-          phone: localStorage.getItem('tel'),
-          linkedin: localStorage.getItem('Linkedin'),
-          github: localStorage.getItem('Github'),
-          teamName: localStorage.getItem('teamName'),
-          institution: localStorage.getItem('institution'),
-          graduation: localStorage.getItem('graduation'),
-          day: localStorage.getItem('dia'),
-          month: localStorage.getItem('mes'),
-          year: localStorage.getItem('ano'),
+            fullName: localStorage.getItem('nome'),
+            nickname: localStorage.getItem('nickname'),
+            email: localStorage.getItem('email'),
+            phone: localStorage.getItem('tel'),
+            linkedin: localStorage.getItem('linkedin'),
+            github: localStorage.getItem('github'),
+            teamName: localStorage.getItem('teamName'),
+            institution: localStorage.getItem('institution'),
+            graduation: localStorage.getItem('graduation'),
+            day: localStorage.getItem('dia'),
+            month: localStorage.getItem('mes'),
+            year: localStorage.getItem('ano'),
         }
         setDados(dados)
-      }, [])
+    }, [])
 
     return (
         <div className="align" style={{ position: 'relative', height: '700px' }}>
@@ -101,22 +104,19 @@ function TelaSucess () {
                 </tbody>
             </table>
             <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    width="sm"
-                    sx={{
-                        display: 'block',
-                        marginTop: 4,
-                        marginLeft: 55,
-                        '& .MuiSvgIcon-NavigateNext': { fontSize: 5 }
-                    }}
-                    onClick={()=>{
-                        localStorage.clear();
-                    }}
-                >
-                    Ok
-                </Button>
+                variant="contained"
+                color="primary"
+                width="sm"
+                className="styleBtn"
+                onClick={() => {
+                    console.log('oi');
+                    localStorage.clear();
+
+                    console.log('oi');
+                }}
+            >
+                Ok
+            </Button>
         </div>
     );
 }

@@ -1,0 +1,25 @@
+.styleBox {
+    width: 650px;
+    height: 763px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 48px;
+    margin: auto;
+}
+
+.styleBtn {
+    display: block;
+    margin-top: 40px;
+    margin-left: 450px;   
+}
+
+.styleCheck {
+    margin-right: 40px;
+    background-color: blue;
+}
+
+/*
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;*/

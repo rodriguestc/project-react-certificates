@@ -3,6 +3,7 @@ import { Button } from '@material-ui/core';
 import TelaUm from './TelaUm';
 import TelaTres from './TelaTres';
 import '../CSS/TelaStyle.css';
+import '../CSS/styleMui.css';
 
 function TelaDois({ aoEnviar }) {
     
@@ -21,7 +22,7 @@ function TelaDois({ aoEnviar }) {
             github: localStorage.getItem('github'),
           })
         }
-      }, [])
+      }, [dados])
 
     let linkUm = { TelaUm };
     let linkDois = { TelaDois };
@@ -42,8 +43,8 @@ function TelaDois({ aoEnviar }) {
                 onSubmit={(event) => {
                     event.preventDefault();
                     aoEnviar();
-                    localStorage.setItem('linkedin', dados.github);
-                    localStorage.setItem('github', dados.linkedin);
+                    localStorage.setItem('linkedin', dados.linkedin);
+                    localStorage.setItem('github', dados.github);
                     
                 }}>
                 <label for="linkedin" className="text">Linkedin</label>
@@ -75,6 +76,7 @@ function TelaDois({ aoEnviar }) {
                     variant="contained"
                     color="primary"
                     width="sm"
+                    className="styleBtn"
                     sx={{
                         display: 'block',
                         marginTop: 4,

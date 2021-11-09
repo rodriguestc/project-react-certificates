@@ -6,6 +6,7 @@ import '../CSS/birthday.css';
 import { Button, Checkbox } from '@material-ui/core';
 import TelaDois from './TelaDois';
 import { calculaIdade } from '../JS/calculaIdade';
+import '../CSS/styleMui.css';
 
 
 function TelaUm({ aoEnviar }) {
@@ -18,40 +19,45 @@ function TelaUm({ aoEnviar }) {
             dia: 0,
             mes: 0,
             ano: 0,
+            idade: 0,
         },
         checkbox: false,
     })
 
-    const setIdade = () => {
-        const idade = calculaIdade(dados.aniver.dia, dados.aniver.mes, dados.aniver.ano);
-        console.log(idade);
+    /*const Age = () => {
+        alert('oi');
+        console.log(dados.aniver.idade, dados.aniver.dia, dados.aniver.mes, dados.aniver.ano);
+        const dia = dados.aniver.dia;
+        const mes = dados.aniver.mes;
+        const ano = dados.aniver.ano;
+        const age = calculaIdade(dia, mes, ano);
+        console.log(age);
         setDados.aniver({
             ...dados.aniver,
-            idade: idade,
+            idade: age,
         });
-    }
-
+    }*/
 
     useEffect(() => {
-        if (localStorage.getItem('fullName') !== null) {
+        if (localStorage.getItem('nome') !== null) {
             let aniver = {
-                dia: localStorage.getItem('day'),
-                mes: localStorage.getItem('month'),
-                ano: localStorage.getItem('year'),
+                dia: localStorage.getItem('dia'),
+                mes: localStorage.getItem('mes'),
+                ano: localStorage.getItem('ano'),
             }
 
 
             setDados({
                 ...dados,
-                nome: localStorage.getItem('fullName'),
-                nickname: localStorage.getItem('nickName'),
+                nome: localStorage.getItem('nome'),
+                nickname: localStorage.getItem('nickname'),
                 email: localStorage.getItem('email'),
-                tel: localStorage.getItem('phone'),
+                tel: localStorage.getItem('tel'),
                 aniver,
                 checkbox: localStorage.getItem('checkebox'),
             })
         }
-    }, [])
+    }, [dados])
 
     let linkUm = { TelaUm };
     let linkDois = { TelaDois };
@@ -72,6 +78,7 @@ function TelaUm({ aoEnviar }) {
                 onSubmit={(event) => {
                     event.preventDefault();
                     aoEnviar();
+                    console.log(dados.idade);
                     localStorage.setItem('nome', dados.nome);
                     localStorage.setItem('nickname', dados.nickname);
                     localStorage.setItem('tel', dados.tel);
@@ -81,7 +88,7 @@ function TelaUm({ aoEnviar }) {
                     localStorage.setItem('ano', dados.aniver.ano);
 
                 }}>
-                <label for="nome" className="text" required>Full Name *</label>
+                <label forHTML="nome" className="text" required>Full Name *</label>
                 <input
                     type="text"
                     id="nome"
@@ -95,7 +102,7 @@ function TelaUm({ aoEnviar }) {
                     }}
                 />
 
-                <label for="nickname" className="text">Nickname</label>
+                <label forHTML="nickname" className="text">Nickname</label>
                 <input
                     type="text"
                     id="nickname"
@@ -109,7 +116,7 @@ function TelaUm({ aoEnviar }) {
                 />
                 <div className="boxEmailTel box-input">
                     <div className="boxEmail">
-                        <label for="inputEmail" className="text">Email *</label>
+                        <label forHTML="inputEmail" className="text">Email *</label>
                         <input
                             id="inputEmail"
                             type="email"
@@ -124,7 +131,7 @@ function TelaUm({ aoEnviar }) {
                         />
                     </div>
                     <div className="boxTel">
-                    <label for="telefone" className="text align">Phone</label>
+                    <label forHTML="telefone" className="text align">Phone</label>
                         <InputMask
                             onBlur={(event) => {
                                 setDados({ ...dados, tel: event.target.value })
@@ -136,7 +143,6 @@ function TelaUm({ aoEnviar }) {
                             class='inputShort'
                             id='telefone'
                             placeholder='(00) 00000-0000'
-                            pattern='\([0-9]{2}) [0-9]{5}-[0-9]{4}$'
                             mask="(99) 99999-9999">
                         </InputMask>
                     </div>
@@ -144,7 +150,7 @@ function TelaUm({ aoEnviar }) {
                 <div className="box-Bday box-input">
                     <h3 className="pbirth">Birthday *</h3>
                     <div className="boxdia">
-                        <label className="text" for="dia">Day</label>
+                        <label className="text" forHTML="dia">Day</label>
                         <input
                             id="dia"
                             min="01" max="31"
@@ -162,7 +168,7 @@ function TelaUm({ aoEnviar }) {
                         />
                     </div>
                     <div className="boxmes">
-                        <label for="mes" className="text">Month</label>
+                        <label forHTML="mes" className="text">Month</label>
                         <input
                             id="mes"
                             min="01" max="12"
@@ -182,7 +188,7 @@ function TelaUm({ aoEnviar }) {
                         />
                     </div>
                     <div className="boxano">
-                        <label for="ano" className="text">Year</label>
+                        <label forHTML="ano" className="text">Year</label>
                         <input
                             id="ano"
                             min="1800" max="2021"
@@ -202,7 +208,7 @@ function TelaUm({ aoEnviar }) {
                         />
                     </div>
                     <div className="boxage">
-                        <label for="age" className="text">Age</label>
+                        <label forHTML="age" className="text">Age</label>
                         <input
                             id="age"
                             min="0" max="200"
@@ -210,7 +216,18 @@ function TelaUm({ aoEnviar }) {
                             className="inputBday"
                             disabled
                             name="idade"
-                            setIdade={setIdade}
+                            onClick= {(event)=> {
+                                console.log('oi');
+                                const dia = dados.aniver.dia;
+                                const mes = dados.aniver.mes;
+                                const ano = dados.aniver.ano;
+                                const age = calculaIdade(dia,mes,ano);
+                                console.log(age);
+                                setDados.aniver({
+                                    ...dados.aniver,
+                                    idade: age,
+                                });
+                            }}
                         />
                     </div>
                 </div>
@@ -220,6 +237,7 @@ function TelaUm({ aoEnviar }) {
                         marginRight: 3,
                         '& .MuiSvgIcon-root': { fontSize: 28 }
                     }}
+                    className="styleCheck"
                     required
                     value={dados.checkbox}
                     onChange={(event) => {
@@ -228,12 +246,13 @@ function TelaUm({ aoEnviar }) {
                     name="checkbox"
 
                 />
-                <label for="checked" className="textCB">I accept the terms and privacy.</label>
+                <label forHTML="checked" className="textCB">I accept the terms and privacy.</label>
                 <Button
                     type="submit"
                     variant="contained"
                     color="primary"
                     width="sm"
+                    className="styleBtn"
                     sx={{
                         display: 'block',
                         marginTop: 4,
@@ -249,18 +268,3 @@ function TelaUm({ aoEnviar }) {
 }
 
 export default TelaUm;
-
-
-/*
-                        <input
-                            id="telefone"
-                            type="tel"
-                            pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}$"
-                            placeholder="(00) 00000-0000"
-                            className="inputShort"
-                            name="tel"
-                            value={dados.tel}
-                            onChange={(event) => {
-                                setDados({ ...dados, tel: event.target.value })
-                            }}
-                        />*/

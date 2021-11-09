@@ -1,39 +1,40 @@
 import React, {useEffect, useState} from 'react';
 import TelaUm from './TelaUm';
-import {Box} from '@material-ui/core'
+import {Box} from '@material-ui/core';
 import TelaTres from './TelaTres';
 import TelaDois from './TelaDois';
 import TelaSucess from './TelaSucess';
+import '../CSS/styleMui.css';
 
 
 function BaseFormulario({ aoEnviar}) {
   const [etapaAtual, setEtapaAtual] = useState(0);
-  const [dadosColetados, setDados] = useState({});
 
   useEffect(() => {
     if (etapaAtual === formularios.length - 1) {
-      aoEnviar(dadosColetados);
+      aoEnviar();
     }
   });
 
   const formularios = [
-    <TelaUm aoEnviar={coletarDados} />,
-    <TelaDois aoEnviar={coletarDados} />,
-    <TelaTres aoEnviar={coletarDados} />,
+    <TelaUm aoEnviar={nextPage} />,
+    <TelaDois aoEnviar={nextPage} />,
+    <TelaTres aoEnviar={nextPage} />,
     <TelaSucess />,
   ];
 
-  function coletarDados(dados) {
-    setDados({ ...dadosColetados, ...dados });
+  function nextPage() {
     proximo();
   }
+
   function proximo() {
     setEtapaAtual(etapaAtual + 1);
   }
-  console.log(dadosColetados);
+  console.log(etapaAtual);
   return (
     <div className="background">
       <Box
+        className="styleBox"
         sx={{
           width: 550,
           height: 750,

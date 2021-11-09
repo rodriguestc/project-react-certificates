@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../CSS/TelaStyle.css';
 import { Button } from '@material-ui/core';
 import TelaUm from './TelaUm';
 import TelaDois from './TelaDois';
-import AlertCertificates from '../AlertCertificates';
+import '../CSS/styleMui.css';
 
 
 
 function TelaTres({ aoEnviar }) {
-    let Certificates = 0;
     let linkUm = {TelaUm};
     let linkDois = {TelaDois};
     let linkTres = {TelaTres};
@@ -20,13 +19,6 @@ function TelaTres({ aoEnviar }) {
         graduation: '',
       })
 
-    useEffect(() => {
-        if (Certificates >= 5) {
-            < AlertCertificates />
-        }
-        
-    });
-
     return (
         <>
 
@@ -34,9 +26,9 @@ function TelaTres({ aoEnviar }) {
                 onSubmit={(event) => {
                     event.preventDefault();
                     aoEnviar();
-                    localStorage.setItem('institution', setDados.institution);
-                    localStorage.setItem('graduation', setDados.graduation);
-                    localStorage.setItem('teamName', setDados.teamName);
+                    localStorage.setItem('institution', dados.institution);
+                    localStorage.setItem('graduation', dados.graduation);
+                    localStorage.setItem('teamName', dados.teamName);
                     
                 }}
             >
@@ -67,14 +59,14 @@ function TelaTres({ aoEnviar }) {
                         <div
                             className="more"
                             onChange={(event) => {
-                                Certificates = event.target.length;
                                 let cert = event.target.value;
                                 arrayCertificates = {...arrayCertificates, cert};
+                                console.log("oi");
                             }}
                         >
                             <i data-feather="plus" className="plus"></i>
                             <Button
-                                type="submit"
+                                type="button"
                                 variant="contained"
                                 color="primary"
                                 width="medium"
@@ -138,6 +130,7 @@ function TelaTres({ aoEnviar }) {
                     variant="contained"
                     color="primary"
                     width="medium"
+                    className="styleBtn"
                     sx={{
                         display: 'block',
                         marginTop: 4,
@@ -152,3 +145,10 @@ function TelaTres({ aoEnviar }) {
 }
 
 export default TelaTres;
+
+/*
+    useEffect(() => {
+        if (Certificates >= 5) {
+            < AlertCertificates />
+        }
+    });*/
